@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+class Post {
+    static $blog_posts = [
+        [
+            "title" => "Halaman Pertama",
+            "slug" => "judul-halaman-pertama",
+            "author" => "Mukti DJ",
+            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, porro? Consectetur, quaerat? Vero veritatis inventore ex consequatur ea amet sit neque, dolor provident at porro quaerat quibusdam, iure quo est."
+        ],
+        [
+            "title" => "Halaman Kedua",
+            "slug" => "judul-halaman-kedua",
+            "author" => "DJ Itkum",
+            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, porro? Consectetur, quaerat? Vero veritatis inventore ex consequatur ea amet sit neque, dolor provident at porro quaerat quibusdam, iure quo est."
+        ],
+    ];
+
+    public static function all() {
+        return self::$blog_posts;
+    }
+
+    public static function find($slug) {
+        $posts =  self::$blog_posts;
+        $new_post = [];
+            foreach ($posts as $post) {
+                 if($post['slug'] === $slug) {
+                      $new_post = $post;
+                 }
+             }
+             return $new_post;
+    }
+}
