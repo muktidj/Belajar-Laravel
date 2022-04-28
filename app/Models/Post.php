@@ -19,17 +19,11 @@ class Post {
     ];
 
     public static function all() {
-        return self::$blog_posts;
+        return collect(self::$blog_posts);
     }
 
     public static function find($slug) {
-        $posts =  self::$blog_posts;
-        $new_post = [];
-            foreach ($posts as $post) {
-                 if($post['slug'] === $slug) {
-                      $new_post = $post;
-                 }
-             }
-             return $new_post;
+        $posts =  static::all();
+        return $posts->firstWhere('slug', $slug);
     }
 }
