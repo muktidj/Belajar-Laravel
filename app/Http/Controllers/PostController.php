@@ -14,10 +14,20 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($slug) {
+    // Tanpa Route Binding
+    /*
+    public function show($id) {
         return view('post', [
             "title" => "Single Post",
-            "post" => Post::find($slug)
+            "post" => Post::find($id)
+        ]);
+    }
+    */
+    //Dengan Route Binding
+    public function show(Post $post) {
+        return view('post', [
+            "title" => "Single Post",
+            "post" => $post
         ]);
     }
 }

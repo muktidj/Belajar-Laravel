@@ -2,28 +2,16 @@
 
 namespace App\Models;
 
-class Post {
-    static $blog_posts = [
-        [
-            "title" => "Halaman Pertama",
-            "slug" => "judul-halaman-pertama",
-            "author" => "Mukti DJ",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, porro? Consectetur, quaerat? Vero veritatis inventore ex consequatur ea amet sit neque, dolor provident at porro quaerat quibusdam, iure quo est."
-        ],
-        [
-            "title" => "Halaman Kedua",
-            "slug" => "judul-halaman-kedua",
-            "author" => "DJ Itkum",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, porro? Consectetur, quaerat? Vero veritatis inventore ex consequatur ea amet sit neque, dolor provident at porro quaerat quibusdam, iure quo est."
-        ],
-    ];
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-    public static function all() {
-        return collect(self::$blog_posts);
-    }
+class Post extends Model
+{
+    use HasFactory;
 
-    public static function find($slug) {
-        $posts =  static::all();
-        return $posts->firstWhere('slug', $slug);
-    }
+    // protected $fillable = ['title', 'excerpt', 'body'];
+    // Berfungsi untuk melakukan insert db banyak data di ticker, yg di define boleh diisi
+
+    protected $guarded = ['id'];
+    // Berfungsi untuk melakukan insert db banyak data di ticker, yg di define tidak boleh diisi, sisanya boleh
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Blogpost;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,8 @@ Route::get('/about', function () {
 
 Route::get('/blog', [PostController::class, 'index']);
 
-// Halaman single blog
-Route::get('/blog/{slug}', [PostController::class, 'show']);
+// Halaman single blog tanpa route model binding
+//Route::get('/blog/{slug}', [PostController::class, 'show']);
+
+//menggunakan route model binding :slug
+Route::get('/blog/{post:slug}', [PostController::class, 'show']);
